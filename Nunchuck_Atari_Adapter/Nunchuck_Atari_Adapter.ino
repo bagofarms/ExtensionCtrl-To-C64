@@ -1,10 +1,10 @@
 #include <NintendoExtensionCtrl.h>
 
-#define U_PIN 4
-#define D_PIN 5
-#define L_PIN 6
-#define R_PIN 7
-#define F_PIN 8
+#define U_PIN 0
+#define D_PIN 1
+#define L_PIN 2
+#define R_PIN 3
+#define F_PIN 10
 
 NESMiniController nes;
 
