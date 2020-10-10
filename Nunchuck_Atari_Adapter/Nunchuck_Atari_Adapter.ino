@@ -9,14 +9,14 @@
 NESMiniController nes;
 
 void setup() {
-	Serial.begin(115200);
-	nes.begin();
+  //Serial.begin(115200);
+  nes.begin();
 
-	while (!nes.connect()) {
-		Serial.println("Classic Controller not detected!");
-		delay(1000);
-	}
-  
+  while (!nes.connect()) {
+    //Serial.println("Classic Controller not detected!");
+    delay(1000);
+  }
+
   pinMode(U_PIN, OUTPUT);
   pinMode(D_PIN, OUTPUT);
   pinMode(L_PIN, OUTPUT);
@@ -31,19 +31,18 @@ void setup() {
 }
 
 void loop() {
-	bool success = nes.update();  // Get new data from the controller
+  bool success = nes.update();  // Get new data from the controller
 
-	if (success == true) {  // We've got data!
-		//nes.printDebug();  // Print all of the values!
+  if (success == true) {  // We've got data!
+    //nes.printDebug();  // Print all of the values!
     digitalWrite(U_PIN, (nes.dpadUp() || nes.buttonA()));
     digitalWrite(D_PIN, nes.dpadDown());
     digitalWrite(L_PIN, nes.dpadLeft());
     digitalWrite(R_PIN, nes.dpadRight());
     digitalWrite(F_PIN, nes.buttonB());
-	}
-	else {  // Data is bad :(
-		Serial.println("Controller Disconnected!");
-		delay(1000);
-		nes.connect();
-	}
+  } else {  // Data is bad :(
+    //Serial.println("Controller Disconnected!");
+    delay(1000);
+    nes.connect();
+  }
 }
